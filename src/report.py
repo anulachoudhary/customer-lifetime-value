@@ -1,3 +1,4 @@
+from src.load import Load
 
 class Report:
 
@@ -7,11 +8,13 @@ class Report:
 
     def TopXSimpleLTVCustomers(self, x_top_customers):
 
+        load = Load()
+        top_customers = load.get_top_customer_ltv(x_top_customers)
 
+        output_text = 'TopXSimpleLTVCustomers are:'
 
-        customers = ['10', '20', '30']
-
-        output_text = 'TopXSimpleLTVCustomers are: ' + ' '.join(customers)
+        for record in top_customers:
+            output_text += '\ncustomer_id: ' + record.customer_id + ', LTV:' + str(record.average_weekly_revenue)
 
         with open('../output/output.txt', 'w') as file:
             file.write(output_text)

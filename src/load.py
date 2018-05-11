@@ -1,4 +1,4 @@
-from src.data import Data, Customer, Image, SiteVisit, Order, WeeklyVisit
+from src.data import Data, Customer, Image, SiteVisit, Order, WeeklyVisit, TopCustomerLTV
 import datetime
 
 """
@@ -13,10 +13,11 @@ to take care of scenario above.
 class Load:
 
     db_session = None
+    data = None
 
     def __init__(self):
-        data = Data()
-        self.db_session = data.get_db_connection()
+        self.data = Data()
+        self.db_session = self.data.get_db_connection()
 
 
     def add_customer_entry(self, key, event_time, last_name, adr_city, adr_state):
@@ -162,9 +163,8 @@ class Load:
     #         self.db_session.commit()
 
 
-# if __name__ == "__main__":
-#     session = loadSession()
-#
-#     rows = session.query(Customer).all()
-#     print(rows[0].adr_city)
-#
+    def get_top_customer_ltv(self, x):
+        # Get data from view
+        top_customer_view = self.db_session.query(TopCustomerLTV).limit(x).all()
+
+        return top_customer_view

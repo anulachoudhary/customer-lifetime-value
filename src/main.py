@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     # Run report
     report = Report()
-    report.TopXSimpleLTVCustomers(3)
+    report.TopXSimpleLTVCustomers(10)
 
 
     #

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table
+from sqlalchemy import create_engine, MetaData, Table, Column, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy.sql import insert, select, update
@@ -52,7 +52,14 @@ class WeeklyVisit(object):
         self.weekly_total = weekly_total
 
 
+class TopCustomerLTV(object):
+    def __init__(self, customer_id, average_weekly_review):
+        self.customer_id = customer_id
+        self.average_weekly_review = average_weekly_review
+
+
 class Data:
+
 
     def __init__(self):
         pass
@@ -67,12 +74,15 @@ class Data:
         site_visit_table = Table('site_visit', metadata, autoload=True)
         order_table = Table('order', metadata, autoload=True)
         weekly_visit_table = Table('weekly_visit', metadata, autoload=True)
+        customer_ltv_view = Table('top_customer_ltv', metadata, Column('customer_id', String, primary_key=True), autoload=True)
 
         mapper(Customer, customer_table)
         mapper(Image, image_table)
         mapper(SiteVisit, site_visit_table)
         mapper(Order, order_table)
         mapper(WeeklyVisit, weekly_visit_table)
+
+        mapper(TopCustomerLTV, customer_ltv_view)
 
         Session = sessionmaker(bind=engine)
         session = Session()
