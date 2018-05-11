@@ -2,23 +2,23 @@ Shutterfly
 Code Challenge
 
 
-ASSUMPTIONS:
+## ASSUMPTIONS:
 * Data is in JSON format
 * Currency is in USD
 * We will use US calendar weeks (Sunday to Saturday)
 * 53rd week of previous year will be combined with 0th week of next year
 * Solution leverages Python and SQL            
 
-PERQUISITES:
+##PRE-REQUISITES:
 * Coding in Python 3.0
 * Data management in PostgreSQL
 
-LIBRARIES USED:
+##LIBRARIES USED:
 * SQLAlchemy
 * Other typical Python libraries for date, JSON, etc
 
 
-CODE:
+##CODE:
 The source has two major parts: ETL and reporting. 
 ETL has three parts: Extract, Transform and Load. 
 There is a single function in reporting section. 
@@ -52,7 +52,7 @@ There is also a Data layer to talk to Postgres.
 - report.py:
     - Analytical methods for reporting
 
-SQL:
+##SQL:
 * All sql code resides in *.sql files in 'src' folder.
 * There is a file with all the SQL schema.
 * There is also a SQL view to efficiently fetch weekly aggregated data for expenditure and visits. 
@@ -61,7 +61,7 @@ SQL:
 
 
 
-FUTURE CHALLENGES:
+##FUTURE CHALLENGES:
 * data cleansing data needs more work
 * handle edge cases 
 * improve redundant checks if records exist - and leverage stored procedures 
