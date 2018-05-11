@@ -4,8 +4,8 @@ from src.report import Report
 if __name__ == "__main__":
     extract = Extract()
     # Ingest data
-    # data = extract.get_events_data_from_file("../input/input.txt")
-    # extract.ingest(data)
+    data = extract.get_events_data_from_file("../input/input.txt")
+    extract.ingest(data)
 
     # Run report
     report = Report()
@@ -13,17 +13,6 @@ if __name__ == "__main__":
 
 
     #
-    # dt = dateutil.parser.parse('2018-01-01T01:56:35.450686Z')
-    # # print (dt.strftime("%Y-%U"))
-    #
-    # dt = dateutil.parser.parse('2018-01-05T01:56:35.450686Z')
-    # # print (dt.strftime("%Y-%U"))
-    #
-    # dt = dateutil.parser.parse('2018-01-07T01:56:35.450686Z')
-    # # print (dt.strftime("%Y-%U"))
-    #
-    # dt = dateutil.parser.parse('2017-12-31T01:56:35.450686Z')
-    # print (dt.strftime("%Y-%U"))
     # week = dt.strftime("%U")
     # year = dt.strftime("%Y")
     #

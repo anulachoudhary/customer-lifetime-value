@@ -30,22 +30,18 @@ class Extract:
 
         # loop over all events inside data
         for dic in data:
-            # print(dict)
 
             # for each item print out what type of event it is
             event_type = (dic.get("type"))
             # For every event type create new model
             if event_type == "CUSTOMER":
                 transform.transform_before_loading_customer(dic)
-                pass
 
             elif event_type == "SITE_VISIT":
                 transform.transform_before_loading_site_visit(dic)
-                pass
 
             elif event_type == "IMAGE":
                 transform.transform_before_loading_image(dic)
-                pass
 
             elif event_type == "ORDER":
                 transform.transform_before_loading_order(dic)

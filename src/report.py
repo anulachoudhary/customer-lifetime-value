@@ -14,7 +14,7 @@ class Report:
         output_text = 'TopXSimpleLTVCustomers are:'
 
         for record in top_customers:
-            output_text += '\ncustomer_id: ' + record.customer_id + ', LTV:' + str(record.average_weekly_revenue)
+            output_text += '\ncustomer_id: ' + record.customer_id + ', LTV:' + str(52 * (record.average_weekly_revenue) * 10)
 
         with open('../output/output.txt', 'w') as file:
             file.write(output_text)

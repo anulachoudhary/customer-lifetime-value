@@ -3,7 +3,23 @@ import dateutil.parser
 from src.load import Load
 
 
+# dt = dateutil.parser.parse('2018-01-01T01:56:35.450686Z')
+# # print (dt.strftime("%Y-%U"))
+#
+# dt = dateutil.parser.parse('2018-01-05T01:56:35.450686Z')
+# # print (dt.strftime("%Y-%U"))
+#
+# dt = dateutil.parser.parse('2018-01-07T01:56:35.450686Z')
+# # print (dt.strftime("%Y-%U"))
+#
+# dt = dateutil.parser.parse('2017-12-31T01:56:35.450686Z')
+# print (dt.strftime("%Y-%U"))
 
+
+"""
+This class will validate the mandatory fields and further cleanse data if needed 
+This class will also reformat wrong data - dates
+"""
 class Transform:
 
     loader = None
@@ -71,13 +87,25 @@ class Transform:
             return
 
         try:
-            dateutil.parser.parse(event_time)
+            valid_date = dateutil.parser.parse(event_time)
+            # Calculate weekly_visit key
+            # We will use US calendar weeks (Sunday to Saturday)
+            year = valid_date.strftime("%Y")
+            week = valid_date.strftime("%U")
+
+            # 53rd week of previous year will be combined with 0th week of next year
+            if week == "53":
+                week = '00'
+                temp_year = int(year) + 1
+                year = str(temp_year)
+
+            weekly_visit_key = year + '-' + week
+
         except ValueError:
             print("Invalid Date in site_visit event_type!")
             return
 
         if tags is not "":
-            # tags = "{" + tags + "}"
             try:
                 json.dumps(tags)
             except ValueError:
@@ -85,7 +113,7 @@ class Transform:
                 return
 
         # Insert into DB
-        self.loader.add_site_visit_entry(key, event_time, customer_id, json.dumps(tags))
+        self.loader.add_site_visit_entry(key, event_time, customer_id, json.dumps(tags), weekly_visit_key)
 
 
 
@@ -165,7 +193,6 @@ class Transform:
 
         try:
             valid_date = dateutil.parser.parse(event_time)
-            weekly_visit_key = ""
             # Calculate weekly_visit key
             # We will use US calendar weeks (Sunday to Saturday)
             year = valid_date.strftime("%Y")

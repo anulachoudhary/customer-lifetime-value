@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import mapper, sessionmaker
+from sqlalchemy.orm import mapper, sessionmaker, clear_mappers
 from sqlalchemy.sql import insert, select, update
 import psycopg2
 
@@ -44,12 +44,13 @@ class Order(object):
 
 
 class WeeklyVisit(object):
-    def __init__(self, week_id, customer_id, week_start, week_end, weekly_total):
+    def __init__(self, week_id, customer_id, week_start, week_end, weekly_total, weekly_visits):
         self.week_id = week_id
         self.customer_id = customer_id
         self.week_start = week_start
         self.week_end = week_end
         self.weekly_total = weekly_total
+        self.weekly_visits = weekly_visits
 
 
 class TopCustomerLTV(object):
@@ -76,12 +77,13 @@ class Data:
         weekly_visit_table = Table('weekly_visit', metadata, autoload=True)
         customer_ltv_view = Table('top_customer_ltv', metadata, Column('customer_id', String, primary_key=True), autoload=True)
 
+        clear_mappers()
+
         mapper(Customer, customer_table)
         mapper(Image, image_table)
         mapper(SiteVisit, site_visit_table)
         mapper(Order, order_table)
         mapper(WeeklyVisit, weekly_visit_table)
-
         mapper(TopCustomerLTV, customer_ltv_view)
 
         Session = sessionmaker(bind=engine)

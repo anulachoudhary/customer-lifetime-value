@@ -1,2 +1,2 @@
 TopXSimpleLTVCustomers are:
-customer_id: 96f55c7d8f42, LTV:67.0199966430664
+customer_id: 96f55c7d8f42, LTV:11616.800079345707

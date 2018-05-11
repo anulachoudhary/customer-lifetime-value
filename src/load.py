@@ -9,6 +9,9 @@ When an order event for customer comes before the customer event, we create
 empty customer record (with nulls or empty data). 
 When a customer event comes, we first check if customer exists before creation 
 to take care of scenario above. 
+
+We have a Fact table for weekly aggregates of site visits and expenditure per customer
+We have used buckets per week via key: YYYY-week_number
 """
 class Load:
 
@@ -19,7 +22,9 @@ class Load:
         self.data = Data()
         self.db_session = self.data.get_db_connection()
 
-
+    """
+    Check and insert/update customer record
+    """
     def add_customer_entry(self, key, event_time, last_name, adr_city, adr_state):
         # First check if customer with this key exists
         customer_record = self.db_session.query(Customer).get(key)
@@ -39,7 +44,11 @@ class Load:
             self.db_session.add(customer)
             self.db_session.commit()
 
-
+    """
+    Check and insert/update order entry
+    Once an order is entered we also enter a record in weekly_visit table to capture aggregates
+    Key to weekly_visit table is combination of year+week number
+    """
     def add_order_entry(self, key, event_time, customer_id, total_amount, weekly_visit_key):
 
         # There is customer_id FK.
@@ -69,7 +78,7 @@ class Load:
             self.db_session.add(order)
             self.db_session.commit()
 
-        # Now also update weekly table
+        # Now also update weekly table and update weekly_total
         # First get value for weekly_visit_key & customer_id
         weekly_visit_record = self.db_session.query(WeeklyVisit).filter(WeeklyVisit.customer_id == customer_id, WeeklyVisit.week_id == weekly_visit_key).first()
         # If exists, add to weekly_total
@@ -86,7 +95,13 @@ class Load:
             self.db_session.commit()
 
 
-    def add_site_visit_entry(self, key, event_time, customer_id, tags):
+    """
+    Check and insert/update visit entry
+    Once a visit is entered we also enter a record in weekly_visit table to capture aggregates
+    We simply increment number of visits
+    Key to weekly_visit table is combination of year+week number
+    """
+    def add_site_visit_entry(self, key, event_time, customer_id, tags, weekly_visit_key):
         # There is customer_id FK.
         # First check if that customer exists, else create that customer
         # First check if customer with this key exists
@@ -115,8 +130,25 @@ class Load:
             self.db_session.add(page)
             self.db_session.commit()
 
+        # Now also update weekly table and update visit count
+        # First get value for weekly_visit_key & customer_id
+        weekly_visit_record = self.db_session.query(WeeklyVisit).filter(WeeklyVisit.customer_id == customer_id, WeeklyVisit.week_id == weekly_visit_key).first()
+        # If exists, add to weekly visits
+        if weekly_visit_record is not None:
+            weekly_visit_record.weekly_visits += 1
+
+            self.db_session.commit()
+
+        else:
+            # Create
+            weekly_visit_record = WeeklyVisit(weekly_visit_key, customer_id, week_start=None, week_end=None, weekly_total=0, weekly_visits=1)
+            self.db_session.add(weekly_visit_record)
+            self.db_session.commit()
 
 
+    """
+    Check and insert/update record in image
+    """
     def add_image_entry(self, key, event_time, customer_id):
         # There is customer_id FK.
         # First check if that customer exists, else create that customer
@@ -163,6 +195,9 @@ class Load:
     #         self.db_session.commit()
 
 
+    """
+    Query an existing View to get Top LTV customers
+    """
     def get_top_customer_ltv(self, x):
         # Get data from view
         top_customer_view = self.db_session.query(TopCustomerLTV).limit(x).all()
