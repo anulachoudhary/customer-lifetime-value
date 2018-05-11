@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01b07aa0-d39b-4ee0-b2c3-ec9e43a0cba7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/output.txt" afterPath="$PROJECT_DIR$/output/output.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data.py" afterPath="$PROJECT_DIR$/src/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extract.py" afterPath="$PROJECT_DIR$/src/extract.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/load.py" afterPath="$PROJECT_DIR$/src/load.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/report.py" afterPath="$PROJECT_DIR$/src/report.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/transform.py" afterPath="$PROJECT_DIR$/src/transform.py" />
-    </list>
+    <list default="true" id="01b07aa0-d39b-4ee0-b2c3-ec9e43a0cba7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,11 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="events.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample_input/events.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="355">
               <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="databaseschema.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/databaseschema.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -128,16 +130,6 @@
                 <element signature="e#5384#5442#0" expanded="false" />
                 <element signature="e#5487#5546#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/json/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="230" column="0" lean-forward="false" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -521,6 +513,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
           <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/databaseschema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
           <folding />
         </state>
       </provider>
