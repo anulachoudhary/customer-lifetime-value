@@ -90,7 +90,7 @@ class Load:
 
         else:
             # Create
-            weekly_visit_record = WeeklyVisit(weekly_visit_key, customer_id, week_start=None, week_end=None, weekly_total=total_amount)
+            weekly_visit_record = WeeklyVisit(weekly_visit_key, customer_id, week_start=None, week_end=None, weekly_total=total_amount, weekly_visits=1)
             self.db_session.add(weekly_visit_record)
             self.db_session.commit()
 

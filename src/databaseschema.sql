@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-05-11 00:06:26
+-- Started on 2018-05-11 00:39:42
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -172,7 +172,7 @@ CREATE VIEW public.top_customer_ltv AS
    FROM public.weekly_visit,
     weeks
   GROUP BY weekly_visit.customer_id, weeks.number_of_weeks
-  ORDER BY (sum((weekly_visit.weekly_total)::real) / (weeks.number_of_weeks)::double precision);
+  ORDER BY (sum((weekly_visit.weekly_total)::real) / (weeks.number_of_weeks)::double precision) DESC;
 
 
 ALTER TABLE public.top_customer_ltv OWNER TO postgres;
@@ -281,7 +281,7 @@ ALTER TABLE ONLY public.site_visit
     ADD CONSTRAINT customer_fk FOREIGN KEY (customer_id) REFERENCES public.customer(customer_id);
 
 
--- Completed on 2018-05-11 00:06:26
+-- Completed on 2018-05-11 00:39:42
 
 --
 -- PostgreSQL database dump complete

@@ -36,7 +36,7 @@ class Image(object):
 
 
 class Order(object):
-    def __init__(self, order_id, event_time, customer_id, total_amount):
+    def __init__(self, order_id, event_time, customer_id, total_amount=0):
         self.order_id = order_id
         self.event_time = event_time
         self.customer_id = customer_id
@@ -44,7 +44,7 @@ class Order(object):
 
 
 class WeeklyVisit(object):
-    def __init__(self, week_id, customer_id, week_start, week_end, weekly_total, weekly_visits):
+    def __init__(self, week_id, customer_id, week_start, week_end, weekly_total=0, weekly_visits=1):
         self.week_id = week_id
         self.customer_id = customer_id
         self.week_start = week_start
