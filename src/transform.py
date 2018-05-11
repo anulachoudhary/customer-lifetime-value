@@ -2,6 +2,8 @@ import json
 import dateutil.parser
 from src.load import Load
 
+
+
 class Transform:
 
     loader = None
@@ -75,14 +77,15 @@ class Transform:
             return
 
         if tags is not "":
+            # tags = "{" + tags + "}"
             try:
-                json.loads(tags)
+                json.dumps(tags)
             except ValueError:
                 print("Invalid JSON format in site_visit tags!")
                 return
 
         # Insert into DB
-        self.loader.add_site_visit_entry(key, event_time, customer_id, tags)
+        self.loader.add_site_visit_entry(key, event_time, customer_id, json.dumps(tags))
 
 
 
@@ -162,9 +165,23 @@ class Transform:
 
         try:
             valid_date = dateutil.parser.parse(event_time)
+            weekly_visit_key = ""
+            # Calculate weekly_visit key
+            # We will use US calendar weeks (Sunday to Saturday)
+            year = valid_date.strftime("%Y")
+            week = valid_date.strftime("%U")
+
+            # 53rd week of previous year will be combined with 0th week of next year
+            if week == "53":
+                week = '00'
+                temp_year = int(year) + 1
+                year = str(temp_year)
+
+            weekly_visit_key = year + '-' + week
+
         except ValueError:
             print("Invalid Date in order event_type!")
             return
 
         # Insert into DB
-        self.loader.add_order_entry(key, event_time, customer_id, total_amount)
+        self.loader.add_order_entry(key, event_time, customer_id, total_amount, weekly_visit_key)

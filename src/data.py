@@ -67,7 +67,7 @@ class Data:
         site_visit_table = Table('site_visit', metadata, autoload=True)
         order_table = Table('order', metadata, autoload=True)
         weekly_visit_table = Table('weekly_visit', metadata, autoload=True)
-        #
+
         mapper(Customer, customer_table)
         mapper(Image, image_table)
         mapper(SiteVisit, site_visit_table)

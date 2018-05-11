@@ -39,15 +39,15 @@ class Load:
             self.db_session.commit()
 
 
-    def add_order_entry(self, key, event_time, customer_id, total_amount):
+    def add_order_entry(self, key, event_time, customer_id, total_amount, weekly_visit_key):
 
         # There is customer_id FK.
         # First check if that customer exists, else create that customer
         # First check if customer with this key exists
-        customer_record = self.db_session.query(Customer).get(key)
+        customer_record = self.db_session.query(Customer).get(customer_id)
         if customer_record is None:
             # Create customer record with current event_time and empty adr_city and adr_state feils
-            customer = Customer(customer_id, datetime.datetime.now(), "", "")
+            customer = Customer(customer_id, datetime.datetime.now(), "", "", "")
             self.db_session.add(customer)
             self.db_session.commit()
 
@@ -68,24 +68,31 @@ class Load:
             self.db_session.add(order)
             self.db_session.commit()
 
-
-
-            # If exists, then update
-        # Else create
-
-
-
         # Now also update weekly table
+        # First get value for weekly_visit_key & customer_id
+        weekly_visit_record = self.db_session.query(WeeklyVisit).filter(WeeklyVisit.customer_id == customer_id, WeeklyVisit.week_id == weekly_visit_key).first()
+        # If exists, add to weekly_total
+        if weekly_visit_record is not None:
+            temp_total = float(weekly_visit_record.weekly_total) + float(total_amount)
+            weekly_visit_record.weekly_total = str(temp_total)
+
+            self.db_session.commit()
+
+        else:
+            # Create
+            weekly_visit_record = WeeklyVisit(weekly_visit_key, customer_id, week_start=None, week_end=None, weekly_total=total_amount)
+            self.db_session.add(weekly_visit_record)
+            self.db_session.commit()
 
 
     def add_site_visit_entry(self, key, event_time, customer_id, tags):
         # There is customer_id FK.
         # First check if that customer exists, else create that customer
         # First check if customer with this key exists
-        customer_record = self.db_session.query(Customer).get(key)
+        customer_record = self.db_session.query(Customer).get(customer_id)
         if customer_record is None:
             # Create customer record with current event_time and empty adr_city and adr_state fields
-            customer = Customer(customer_id, datetime.datetime.now(), "", "")
+            customer = Customer(customer_id, datetime.datetime.now(), "", "", "")
             self.db_session.add(customer)
             self.db_session.commit()
 
@@ -113,7 +120,7 @@ class Load:
         # There is customer_id FK.
         # First check if that customer exists, else create that customer
         # First check if customer with this key exists
-        customer_record = self.db_session.query(Customer).get(key)
+        customer_record = self.db_session.query(Customer).get(customer_id)
         if customer_record is None:
             # Create customer record with current event_time and empty adr_city and adr_state feils
             customer = Customer(customer_id, datetime.datetime.now(), "", "")
@@ -137,22 +144,22 @@ class Load:
             self.db_session.add(image)
             self.db_session.commit()
 
-    def add_weekly_stats(self):
-        # Based on date figure out which week it belongs
-        # Query based on week date and for specific user
-        # If record exists, read
-        # Increment total
-        # save again
-
-        # There is customer_id FK.
-        # First check if that customer exists, else create that customer
-        # First check if customer with this key exists
-        customer_record = self.db_session.query(Customer).get(key)
-        if customer_record is None:
-            # Create customer record with current event_time and empty adr_city and adr_state feils
-            customer = Customer(customer_id, datetime.datetime.now(), "", "")
-            self.db_session.add(customer)
-            self.db_session.commit()
+    # def add_weekly_stats(self):
+    #     # Based on date figure out which week it belongs
+    #     # Query based on week date and for specific user
+    #     # If record exists, read
+    #     # Increment total
+    #     # save again
+    #
+    #     # There is customer_id FK.
+    #     # First check if that customer exists, else create that customer
+    #     # First check if customer with this key exists
+    #     customer_record = self.db_session.query(Customer).get(key)
+    #     if customer_record is None:
+    #         # Create customer record with current event_time and empty adr_city and adr_state feils
+    #         customer = Customer(customer_id, datetime.datetime.now(), "", "")
+    #         self.db_session.add(customer)
+    #         self.db_session.commit()
 
 
 # if __name__ == "__main__":

@@ -36,5 +36,13 @@
       "event_time": "2017-01-06T12:55:55.555Z",
       "customer_id": "96f55c7d8f42",
       "total_amount": "12.34 USD"
+    },
+    {
+      "type": "ORDER",
+      "verb": "NEW",
+      "key": "68d84e5d1a42",
+      "event_time": "2017-01-06T12:55:55.555Z",
+      "customer_id": "96f55c7d8f42",
+      "total_amount": "10 USD"
     }
   ]

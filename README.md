@@ -7,7 +7,9 @@ Your source files reside in this directory
 ASSUMPTIONS:
 Data is in JSON format
 Currency is in USD
-
+We will use US calendar weeks (Sunday to Saturday)
+53rd week of previous year will be combined with 0th week of next year
+            
 
 PERQUISITES:
 Coding in Python 3.0
