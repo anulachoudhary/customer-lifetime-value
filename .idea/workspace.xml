@@ -4,9 +4,6 @@
     <list default="true" id="01b07aa0-d39b-4ee0-b2c3-ec9e43a0cba7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input/input.txt" afterPath="$PROJECT_DIR$/input/input.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/output.txt" afterPath="$PROJECT_DIR$/output/output.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data.py" afterPath="$PROJECT_DIR$/src/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/databaseschema.sql" afterPath="$PROJECT_DIR$/src/databaseschema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/load.py" afterPath="$PROJECT_DIR$/src/load.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,8 +65,8 @@
       <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2141">
-              <caret line="233" column="19" lean-forward="true" selection-start-line="233" selection-start-column="19" selection-end-line="233" selection-end-column="19" />
+            <state relative-caret-position="739">
+              <caret line="350" column="4" lean-forward="true" selection-start-line="350" selection-start-column="4" selection-end-line="350" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -107,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="databaseschema.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="databaseschema.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/databaseschema.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="93">
@@ -153,11 +150,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="output.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="output.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/output/output.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="2" column="48" lean-forward="true" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+            <state relative-caret-position="320">
+              <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -191,11 +188,11 @@
         <option value="$PROJECT_DIR$/src/extract.py" />
         <option value="$PROJECT_DIR$/src/report.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/input/input.txt" />
         <option value="$PROJECT_DIR$/src/load.py" />
         <option value="$PROJECT_DIR$/src/data.py" />
         <option value="$PROJECT_DIR$/output/output.txt" />
         <option value="$PROJECT_DIR$/src/databaseschema.sql" />
+        <option value="$PROJECT_DIR$/input/input.txt" />
       </list>
     </option>
   </component>
@@ -469,14 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2141">
-          <caret line="233" column="19" lean-forward="true" selection-start-line="233" selection-start-column="19" selection-end-line="233" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/load.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="707">
@@ -520,18 +509,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/output/output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="48" lean-forward="true" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/databaseschema.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="350" column="4" lean-forward="true" selection-start-line="350" selection-start-column="4" selection-end-line="350" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/output.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding />
         </state>
       </provider>

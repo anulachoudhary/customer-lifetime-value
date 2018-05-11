@@ -316,5 +316,37 @@
       "event_time":"2017-03-06T12:55:55.555Z",
       "customer_id":"96f55c7d8f44",
       "total_amount":"1001 USD"
+   },
+   {
+      "type":"ORDER",
+      "verb":"NEW",
+      "key":"88d84ehd1a45",
+      "event_time":"2017-04-06T12:55:55.555Z",
+      "customer_id":"96f55c7d8f30",
+      "total_amount":"1001 USD"
+   },
+   {
+      "type":"ORDER",
+      "verb":"NEW",
+      "key":"88d84e5dja45",
+      "event_time":"2017-04-06T12:55:55.555Z",
+      "customer_id":"96f55c7d8f31",
+      "total_amount":"1001 USD"
+   },
+   {
+      "type":"ORDER",
+      "verb":"NEW",
+      "key":"88d84e5d1a48",
+      "event_time":"2017-05-06T12:55:55.555Z",
+      "customer_id":"96f55c7d8f32",
+      "total_amount":"1001 USD"
+   },
+   {
+      "type":"ORDER",
+      "verb":"NEW",
+      "key":"88dt4e5d1a45",
+      "event_time":"2017-02-06T12:55:55.555Z",
+      "customer_id":"96f55c7d8f33",
+      "total_amount":"1001 USD"
    }
 ]
